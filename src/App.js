@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import useForecast from "./hooks/useForecast";
+import Forecast from "./component/forecast/Forecast";
+import SearchForm from "./component/form/SearchForm";
+import { Spin } from "antd";
 
 function App() {
+  const { isError, isLoading, hasForecast, City, submitRequest } =
+    useForecast();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ fontSize: "30px", textAlign: "center", color: "white" }}>
+        Weather <b>Forecast</b>
+      </div>
+      {!hasForecast && (
+        <div className="box">
+          <SearchForm handleRequest={submitRequest}></SearchForm>
+          {isLoading && <Spin style={{ width: "100%", marginTop: "10px" }} />}
+        </div>
+      )}
+
+      {hasForecast && (
+        <div className="box forecast">
+          <Forecast forecast={hasForecast} city={City}></Forecast>
+        </div>
+      )}
     </div>
   );
 }

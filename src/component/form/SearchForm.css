@@ -1,0 +1,48 @@
+#search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 25px;
+}
+
+#search-form input,
+button {
+  margin: 10px auto;
+  padding: 5px 10px;
+  width: 50%;
+}
+
+#search-form input {
+  border: unset;
+  border-radius: 25px;
+}
+
+#search-form input:focus {
+  outline: none;
+}
+
+.btn-grad {
+  background-image: linear-gradient(
+    to right,
+    #314755 0%,
+    #26a0da 51%,
+    #314755 100%
+  );
+}
+.btn-grad {
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 25px;
+  display: block;
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
